@@ -4,14 +4,33 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "windows": "electron-builder --windows",
+    "macos": "electron-builder --macos"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^19.0.10"
+    "electron": "^19.0.10",
+    "electron-builder": "^23.1.0"
   },
   "dependencies": {
     "node-task-mgr": "^1.0.5"
+  },
+  "build": {
+    "win": {
+      "target": {
+        "target": "nsis",
+        "arch": "x64"
+      }
+    },
+    "mac": {
+      "target": {
+        "target": "default",
+        "arch": [
+          "x64"
+        ]
+      }
+    }
   }
 }
