@@ -1,10 +1,9 @@
 const start = document.getElementById('start');
-const name = document.getElementById('name');
 const out = document.getElementById('out');
 
 start.addEventListener('click', async () => {
     const result = await window.electronAPI.getProcList();
-    if (result.processes !== 'ERROR') { // TODO maybe empty list?
+    if (result.processes) {
         const processList = result.processes;
 
         for (let process of processList) {
@@ -23,12 +22,12 @@ out.addEventListener('click', async (evt) => {
     const node = evt.target;
     if (node.name === 'kill') {
         let pid = node.parentElement.parentElement.cells[0].innerText
-        console.log('send from rendere', pid)
         const result = await window.electronAPI.killProcByPID(pid);
-        if (result.stdout !== 'ERROR') { // TODO refactor
+        console.log('send from rendere', result)
+        if (!result.error) {
             node.parentElement.parentElement.remove();
         } else {
-            alert(result.stderr); // TODO refactor
+            alert(result.error);
         }
     }
 });
