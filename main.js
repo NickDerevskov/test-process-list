@@ -1,4 +1,6 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
+const path = require('path')
+const nodeManager = require('node-task-mgr')
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -9,10 +11,23 @@ const createWindow = () => {
         }
     })
 
+    win.webContents.openDevTools()
+
     win.loadFile('index.html')
+
+    console.log('test', nodeManager)
 }
 
 app.whenReady().then(() => {
+    ipcMain.handle('getProcList', async () => {
+        let result = await nodeManager.getProcList()
+        return result
+    });
+    ipcMain.handle('killProcByPID', async (_,pid) => {
+        let killResult = await nodeManager.killProcByPID(pid)
+        return killResult
+    });
+
     createWindow()
 
     app.on('activate', () => {
