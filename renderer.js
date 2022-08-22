@@ -3,6 +3,7 @@ const out = document.getElementById('out');
 
 start.addEventListener('click', async () => {
     const result = await window.electronAPI.getProcList();
+    console.log('getProcList', result)
     if (result.processes) {
         const processList = result.processes;
 
@@ -14,7 +15,7 @@ start.addEventListener('click', async () => {
         }
     }
     if (result.error) {
-        alert('ERROR', result.error)
+        alert(result.error)
     }
 });
 
