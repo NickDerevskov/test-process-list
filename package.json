@@ -1,6 +1,6 @@
 {
   "name": "test-process-list-module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -18,10 +18,10 @@
     "node-task-mgr": "^1.1.5"
   },
   "build": {
-    "asarUnpack": [
-      "**/test-process-list-module/node_modules/node-task-mg/*"
-    ],
-
+    "extraFiles":{
+      "from":"node_modules/node-task-mgr/bin",
+      "to":"./resources/app.asar.unpacked/bin/"
+    },
     "win": {
       "target": {
         "target": "nsis",
