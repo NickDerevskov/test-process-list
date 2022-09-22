@@ -1,6 +1,6 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    getProcList: () => ipcRenderer.invoke('getProcList'),
+    getProcessList: () => ipcRenderer.invoke('getProcessList'),
     killProcByPID: (pid) => ipcRenderer.invoke('killProcByPID', pid),
 });

@@ -19,8 +19,8 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-    ipcMain.handle('getProcList', async () => {
-        let result = await nodeManager.getProcList()
+    ipcMain.handle('getProcessList', async () => {
+        let result = await nodeManager.getProcessList()
         return result
     });
     ipcMain.handle('killProcByPID', async (_,pid) => {

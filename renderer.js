@@ -2,8 +2,8 @@ const start = document.getElementById('start');
 const out = document.getElementById('out');
 
 start.addEventListener('click', async () => {
-    const result = await window.electronAPI.getProcList();
-    console.log('getProcList', result)
+    const result = await window.electronAPI.getProcessList();
+    console.log('getProcessList', result)
     if (result.processes) {
         const processList = result.processes;
 
