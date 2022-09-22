@@ -18,6 +18,10 @@
     "node-task-mgr": "^1.1.5"
   },
   "build": {
+    "asarUnpack": [
+      "**/test-process-list-module/node_modules/node-task-mg/*"
+    ],
+
     "win": {
       "target": {
         "target": "nsis",
