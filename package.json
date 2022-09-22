@@ -15,12 +15,12 @@
     "electron-builder": "^23.1.0"
   },
   "dependencies": {
-    "node-task-mgr": "^1.1.5"
+    "node-task-mgr": "^1.1.6"
   },
   "build": {
-    "extraFiles":{
-      "from":"node_modules/node-task-mgr/bin",
-      "to":"./resources/app.asar.unpacked/bin/"
+    "extraFiles": {
+      "from": "node_modules/node-task-mgr/bin",
+      "to": "./resources/app.asar.unpacked/bin/"
     },
     "win": {
       "target": {
